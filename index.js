@@ -5,7 +5,7 @@ const app=express()
 
 
 app.get("/",(req,res)=>{
-    res.send("<h1>Devops with node js website okay</h1>");
+    res.send("<h1>Devops with node js website goood night</h1>");
 })
 
 

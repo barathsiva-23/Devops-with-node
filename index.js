@@ -2,10 +2,13 @@ const express= require("express")
 const mongoose=require("mongoose");
 const {MONGO_USER,MONGO_PASSWORD, MONGO_IP, MONGO_PORT}=require("./config/config")
 
-
+const app=express()
+app.use(express.json());
 
 
 const postRouter=require("./routes/postRoutes");
+const userRouter=require("./routes/userRoutes");
+
 
 
 mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`)
@@ -14,8 +17,7 @@ console.log("SUCCESSFULLY CONNECTED "))
 .catch((e)=>console.log(e));
 
 
-const app=express()
-app.use(express.json());
+
 
 
 
@@ -24,6 +26,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/api/v1/posts",postRouter)
+app.use("/api/v1/users",userRouter);
 
 
 
